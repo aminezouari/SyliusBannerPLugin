@@ -296,6 +296,10 @@ return [
             <group>admin:banner:read</group>
             <group>shop:banner:read</group>
         </attribute>
+        <attribute name="id">
+            <group>admin:banner:read</group>
+            <group>shop:banner:read</group>
+        </attribute>
         <attribute name="code">
             <group>admin:banner:read</group>
             <group>shop:banner:read</group>
