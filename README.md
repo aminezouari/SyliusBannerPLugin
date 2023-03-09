@@ -281,11 +281,10 @@ return [
     </resource>
 </resources>
 ```
-## add serialization : Add this files under the config/serialization 
-
-## serialization : Banner.xml 
+7.add this files to your project 
 
 ```xml
+<!-- config/serialization/Banner.xml -->
 <?xml version="1.0" ?>
 
 <serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
@@ -313,9 +312,9 @@ return [
     </class>
 </serializer>
 ```
-## serialization : Slide.xml 
 
 ```xml
+<!-- config/serialization/Slide.xml -->
 <?xml version="1.0" ?>
 
 <serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
@@ -334,9 +333,10 @@ return [
     </class>
 </serializer>
 ```
-## serialization : SlideTranslation.xml 
+
 
 ```xml
+<!-- config/serialization/SlideTranslation.xml -->
 <?xml version="1.0" ?>
 
 <serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
