@@ -52,9 +52,9 @@ bin/console doctrine:migrations:diff
 bin/console doctrine:migrations:migrate
 ```
  
+## Add this file under : config/api_plateform 
 
-
-##complete configuration : Banner.xml
+## complete configuration : Banner.xml
 ```xml
 <?xml version="1.0" ?>
 
