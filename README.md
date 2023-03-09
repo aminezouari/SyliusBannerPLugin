@@ -283,6 +283,78 @@ bin/console doctrine:migrations:migrate
     </resource>
 </resources>
 ```
+## add serialization : Add this files under the config/serialization 
 
+## serialization : Banner.xml 
 
+```xml
+<?xml version="1.0" ?>
+
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="Black\SyliusBannerPlugin\Entity\Banner">
+        <attribute name="name">
+            <group>admin:banner:read</group>
+            <group>shop:banner:read</group>
+        </attribute>
+        <attribute name="code">
+            <group>admin:banner:read</group>
+            <group>shop:banner:read</group>
+        </attribute>
+        <attribute name="enabled">
+            <group>admin:banner:read</group>
+            <group>shop:banner:read</group>
+        </attribute>
+        <attribute name="slides">
+            <group>admin:banner:read</group>
+            <group>shop:banner:read</group>
+        </attribute>
+
+    </class>
+</serializer>
+```
+## serialization : Slide.xml 
+
+```xml
+<?xml version="1.0" ?>
+
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="Black\SyliusBannerPlugin\Entity\Slide">
+        <attribute name="id">
+            <group>admin:slider:read</group>
+            <group>shop:slider:read</group>
+        </attribute>
+        <attribute name="path">
+            <group>admin:slider:read</group>
+            <group>shop:slider:read</group>
+        </attribute>
+    </class>
+</serializer>
+```
+## serialization : SlideTranslation.xml 
+
+```xml
+<?xml version="1.0" ?>
+
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="Black\SyliusBannerPlugin\Entity\SlideTranslation">
+        <attribute name="id">
+            <group>admin:slider:read</group>
+            <group>shop:slider:read</group>
+        </attribute>
+        <attribute name="content">
+            <group>admin:slider:read</group>
+            <group>shop:slider:read</group>
+        </attribute>
+    </class>
+</serializer>
+```
 
