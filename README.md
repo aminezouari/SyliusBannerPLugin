@@ -45,17 +45,14 @@ return [
 
 `composer require black/sylius-banner-plugin:^1.0.0@dev`
 
-6. Execute migration
 
-```bash
-bin/console doctrine:migrations:diff
-bin/console doctrine:migrations:migrate
-```
+
+
  
-## Add this file under : config/api_plateform 
+6. Add this files to your project  
 
-## complete configuration : Banner.xml
 ```xml
+<!-- config/api_platform/Banner.xml -->
 <?xml version="1.0" ?>
 
 <resources xmlns="https://api-platform.com/schema/metadata"
@@ -153,8 +150,8 @@ bin/console doctrine:migrations:migrate
 </resources>
 ```
 
-## complete configuration : Slide.xml 
 ```xml
+<!-- config /api_paltform/Slide.xml -->
 <?xml version="1.0" ?>
 
 <resources xmlns="https://api-platform.com/schema/metadata"
@@ -254,8 +251,9 @@ bin/console doctrine:migrations:migrate
 </resources>
 ```
 
-## complete configuration : SlideTranslation.xml 
+
 ```xml
+<!-- config/api_paltform/SlideTranslation.xml -->
 <?xml version="1.0" ?>
 
 <resources xmlns="https://api-platform.com/schema/metadata"
@@ -357,4 +355,9 @@ bin/console doctrine:migrations:migrate
     </class>
 </serializer>
 ```
+8. Execute migration
 
+```bash
+bin/console doctrine:migrations:diff
+bin/console doctrine:migrations:migrate
+```
