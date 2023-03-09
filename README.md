@@ -52,21 +52,9 @@ bin/console doctrine:migrations:diff
 bin/console doctrine:migrations:migrate
 ```
  
-7. Render the template
 
-```twig
-# In the desired twig file
 
-{{ render(url('black_sylius_banner_shop_banner_partial', {
-    'code': 'banner1',
-    'template': '@BlackSyliusBannerPlugin/_banner.html.twig' // optional (default template)
-})) }}
-```
-
-__Tip:__ Replace the content of `Homepage/_banner.html.twig` with this snippet and use template
-events!
-
-##complete configuration : Brand.xml
+##complete configuration : Banner.xml
 ```xml
 <?xml version="1.0" ?>
 
@@ -118,7 +106,7 @@ events!
         <itemOperations>
             <itemOperation name="admin_get">
                 <attribute name="method">GET</attribute>
-                <attribute name="path">/admin/banners/{id}</attribute>
+                <attribute name="path">/admin/banner/{id}</attribute>
                 <attribute name="normalization_context">
                     <attribute name="groups">admin:banner:read</attribute>
                 </attribute>
@@ -126,7 +114,7 @@ events!
 
             <itemOperation name="admin_put">
                 <attribute name="method">PUT</attribute>
-                <attribute name="path">/admin/banners/{id}</attribute>
+                <attribute name="path">/admin/banner/{id}</attribute>
                 <attribute name="denormalization_context">
                     <attribute name="groups">admin:banner:update</attribute>
                 </attribute>
@@ -134,12 +122,12 @@ events!
 
             <itemOperation name="admin_delete">
                 <attribute name="method">DELETE</attribute>
-                <attribute name="path">/admin/banners/{id}</attribute>
+                <attribute name="path">/admin/banner/{id}</attribute>
             </itemOperation>
 
             <itemOperation name="shop_get">
                 <attribute name="method">GET</attribute>
-                <attribute name="path">/shop/banners/{id}</attribute>
+                <attribute name="path">/shop/banner/{id}</attribute>
                 <attribute name="normalization_context">
                     <attribute name="groups">shop:banner:read</attribute>
                 </attribute>
@@ -147,7 +135,6 @@ events!
         </itemOperations>
 
         <property name="id" identifier="false" writable="false"/>
-        <property name="code" identifier="true" required="true"/>
         <property name="enabled" readable="true" writable="true"/>
         <property name="translations" required="true">
             <attribute name="openapi_context">
@@ -174,14 +161,14 @@ events!
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
 >
-    <resource class="Black\SyliusBannerPlugin\Entity\Slide" shortName="slider">
-        <attribute name="validation_groups">slider</attribute>
+    <resource class="Black\SyliusBannerPlugin\Entity\Slide" shortName="slide">
+        <attribute name="validation_groups">slide</attribute>
 
         <collectionOperations>
 
             <collectionOperation name="admin_get">
                 <attribute name="method">GET</attribute>
-                <attribute name="path">/admin/sliders</attribute>
+                <attribute name="path">/admin/slides</attribute>
                 <attribute name="normalization_context">
                     <attribute name="groups">admin:slider:read</attribute>
                 </attribute>
@@ -199,7 +186,7 @@ events!
 
             <collectionOperation name="admin_post">
                 <attribute name="method">POST</attribute>
-                <attribute name="path">/admin/sliders</attribute>
+                <attribute name="path">/admin/slides</attribute>
                 <attribute name="denormalization_context">
                     <attribute name="groups">admin:slider:create</attribute>
                 </attribute>
@@ -209,7 +196,7 @@ events!
 
             <collectionOperation name="shop_get">
                 <attribute name="method">GET</attribute>
-                <attribute name="path">/shop/sliders</attribute>
+                <attribute name="path">/shop/slides</attribute>
                 <attribute name="normalization_context">
                     <attribute name="groups">shop:slider:read</attribute>
                 </attribute>
@@ -219,7 +206,7 @@ events!
         <itemOperations>
             <itemOperation name="admin_get">
                 <attribute name="method">GET</attribute>
-                <attribute name="path">/admin/sliders/{id}</attribute>
+                <attribute name="path">/admin/slide/{id}</attribute>
                 <attribute name="normalization_context">
                     <attribute name="groups">admin:slider:read</attribute>
                 </attribute>
@@ -227,7 +214,7 @@ events!
 
             <itemOperation name="admin_put">
                 <attribute name="method">PUT</attribute>
-                <attribute name="path">/admin/sliders/{id}</attribute>
+                <attribute name="path">/admin/slide/{id}</attribute>
                 <attribute name="denormalization_context">
                     <attribute name="groups">admin:slider:update</attribute>
                 </attribute>
@@ -235,12 +222,12 @@ events!
 
             <itemOperation name="admin_delete">
                 <attribute name="method">DELETE</attribute>
-                <attribute name="path">/admin/sliders/{id}</attribute>
+                <attribute name="path">/admin/slide/{id}</attribute>
             </itemOperation>
 
             <itemOperation name="shop_get">
                 <attribute name="method">GET</attribute>
-                <attribute name="path">/shop/sliders/{id}</attribute>
+                <attribute name="path">/shop/slide/{id}</attribute>
                 <attribute name="normalization_context">
                     <attribute name="groups">shop:slider:read</attribute>
                 </attribute>
@@ -265,7 +252,6 @@ events!
         <property name="updatedAt" writable="false"/>
     </resource>
 </resources>
-
 ```
 
 ## complete configuration : SlideTranslation.xml 
@@ -284,11 +270,11 @@ events!
         <itemOperations>
             <itemOperation name="admin_get">
                 <attribute name="method">GET</attribute>
-                <attribute name="path">/admin/slider-translations/{id}</attribute>
+                <attribute name="path">/admin/slide-translations/{id}</attribute>
             </itemOperation>
             <itemOperation name="shop_get">
                 <attribute name="method">GET</attribute>
-                <attribute name="path">/shop/slider-translations/{id}</attribute>
+                <attribute name="path">/shop/slide-translations/{id}</attribute>
             </itemOperation>
         </itemOperations>
 
@@ -298,76 +284,5 @@ events!
 </resources>
 ```
 
-## Complete configuration
 
-```yaml
-parameters:
-    black_banner.uploader.filesystem: "black_sylius_banner"
-        
-doctrine:
-    orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
-        entity_managers:
-            default:
-                auto_mapping: true
 
-knp_gaufrette:
-    adapters:
-        black_sylius_banner:
-            safe_local:
-                directory: "%sylius_core.public_dir%/media/banner/"
-                create: true
-    filesystems:
-        black_sylius_banner:
-            adapter: "%black_banner.uploader.filesystem%"
-    stream_wrapper: ~
-
-liip_imagine:
-    loaders:
-        black_sylius_banner:
-            stream:
-                wrapper: gaufrette://black_sylius_banner/
-    filter_sets:
-        black_sylius_banner:
-            data_loader: black_sylius_banner
-            filters:
-                upscale: { min: [1200, 400] }
-                thumbnail: { size: [1200, 400], mode: inbound }
-                
-sylius_grid:
-    templates:
-        filter:
-            banner_channel: '@BlackSyliusBannerPlugin/Admin/Grid/Filter/channel.html.twig'
-    grids:
-        black_sylius_banner:
-            driver:
-                name: doctrine/orm
-                options:
-                    class: 'expr:parameter("black_sylius_banner.model.banner.class")'
-            fields:
-                code:
-                    type: string
-                    label: sylius.ui.code
-                name:
-                    type: string
-                    label: sylius.ui.name
-            filters:
-                code:
-                    label: sylius.ui.code
-                    type: string
-                name:
-                    label: sylius.ui.name
-                    type: string
-                channel:
-                    type: banner_channel
-                    label: sylius.ui.channel
-            actions:
-                main:
-                    create:
-                        type: create
-                item:
-                    update:
-                        type: update
-                    delete:
-                        type: delete
-```
