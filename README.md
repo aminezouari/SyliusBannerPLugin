@@ -334,6 +334,10 @@ return [
             <group>admin:slider:read</group>
             <group>shop:slider:read</group>
         </attribute>
+        <attribute name="translations">
+            <group>admin:slider:read</group>
+            <group>shop:slider:read</group>
+        </attribute>
     </class>
 </serializer>
 ```
